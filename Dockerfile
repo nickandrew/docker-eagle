@@ -16,6 +16,13 @@ RUN apt-get -y install man-db
 RUN mkdir -p /opt/eagle-7.3.0
 RUN chown user:user /opt/eagle-7.3.0
 
+ADD vnc-passwd-abcd1234 /home/user/.vnc/passwd
+RUN chown -R user:user /home/user/.vnc
+RUN chmod 700 /home/user/.vnc
+RUN chmod 600 /home/user/.vnc/passwd
+ADD bin /home/user/bin
+RUN chown -R user:user /home/user/bin
+
 # ------------------------------------------------------------------------
 # Everything under here, run as user 'user'
 # ------------------------------------------------------------------------
@@ -26,8 +33,7 @@ WORKDIR /home/user
 RUN wget -q -O eagle-lin64-7.3.0.run http://web.cadsoft.de/ftp/eagle/program/7.3/eagle-lin64-7.3.0.run
 RUN chmod 755 eagle-lin64-7.3.0.run
 RUN ./eagle-lin64-7.3.0.run /opt
-ADD bin /home/user/bin
-# COPY eagle-freeware.key /opt/eagle-7.3.0/bin/eagle.key
-# RUN chown 507:200 /opt/eagle-7.3.0/bin/eagle.key
+RUN rm eagle-lin64-7.3.0.run
+RUN mkdir /home/user/eagle
 
 CMD /home/user/bin/start.sh
