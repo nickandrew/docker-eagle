@@ -10,25 +10,25 @@ license key file.
 This repository packages the latest 64-bit Linux release of EAGLE in a
 Docker container.
 
-# BUILDING
+## BUILDING
 
 First install docker (see http://docs.docker.com/installation/ )
 
 Then run: ```docker build .```
 
-# RUNNING
+## RUNNING
 
 EAGLE is graphical software and the container runs a VNC server on
 container port 5901.
 
 To run the container:
 
-    ```docker run -p 32768:5901 -t -i nickandrew/eagle```
+   ```docker run -p 32768:5901 -t -i nickandrew/eagle```
 
 This will make the VNC server visible on localhost port 32768. Next, run
 a VNC client:
 
-    ```vncviewer 0.0.0.0:32768```
+   ```vncviewer 0.0.0.0:32768```
 
 VNC requires a password. A default password of "abcd1234" is built into
 the container.
@@ -38,7 +38,7 @@ time it is run) asking for a license key. Choose "Freeware" to start
 using EAGLE as freeware. Or, if you have a commercial or trial key from
 CadSoft, you'll need to copy that key into your container.
 
-# Persistent storage
+## Persistent storage
 
 All processes inside the container run as user 'user', with disabled
 password and a home directory built into the container. To use persistent
