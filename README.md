@@ -8,9 +8,9 @@ This repository packages the latest 64-bit Linux release of EAGLE in a Docker co
 
 ## BUILDING
 
-First install docker (see [http://docs.docker.com/installation/] )
+First install docker (see [Docker Installation](http://docs.docker.com/installation/) )
 
-Then run: ```docker build .```
+Then run: `docker build .`
 
 ## RUNNING
 
