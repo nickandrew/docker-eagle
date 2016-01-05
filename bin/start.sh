@@ -6,4 +6,4 @@ rm -f /tmp/.X1-lock
 
 vnc4server :1
 sleep 3
-DISPLAY=:1 /opt/eagle-7.3.0/bin/eagle
+DISPLAY=:1 /opt/eagle-7.5.0/bin/eagle
