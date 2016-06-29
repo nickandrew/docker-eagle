@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 MAINTAINER Nick Andrew <nick@nick-andrew.net>
 EXPOSE 5901
 
@@ -7,14 +7,14 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install vnc4server blackbox xterm
 RUN apt-get -y install libpulse0
 RUN apt-get -y install command-not-found
-RUN apt-get -y install wget
+RUN apt-get -y install wget bzip2
 
 RUN adduser --gecos 'User Name,,,' --disabled-password user
 
 RUN apt-get -y install libcups2
 RUN apt-get -y install man-db
-RUN mkdir -p /opt/eagle-7.5.0
-RUN chown user:user /opt/eagle-7.5.0
+RUN mkdir -p /opt/eagle-7.6.0
+RUN chown user:user /opt/eagle-7.6.0
 
 ADD vnc-passwd-abcd1234 /home/user/.vnc/passwd
 RUN chown -R user:user /home/user/.vnc
@@ -30,10 +30,10 @@ RUN chown -R user:user /home/user/bin
 USER user
 WORKDIR /home/user
 
-RUN wget -q -O eagle-lin64-7.5.0.run http://web.cadsoft.de/ftp/eagle/program/7.5/eagle-lin64-7.5.0.run
-RUN chmod 755 eagle-lin64-7.5.0.run
-RUN ./eagle-lin64-7.5.0.run /opt
-RUN rm eagle-lin64-7.5.0.run
+RUN wget -q -O eagle-lin64-7.6.0.run http://web.cadsoft.de/ftp/eagle/program/7.6/eagle-lin64-7.6.0.run
+RUN chmod 755 eagle-lin64-7.6.0.run
+RUN ./eagle-lin64-7.6.0.run /opt
+RUN rm eagle-lin64-7.6.0.run
 RUN mkdir /home/user/eagle
 
 CMD /home/user/bin/start.sh
