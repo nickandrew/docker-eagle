@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Nick Andrew <nick@nick-andrew.net>
 EXPOSE 5901
 
@@ -11,10 +11,16 @@ RUN apt-get -y install wget bzip2
 
 RUN adduser --gecos 'User Name,,,' --disabled-password user
 
+# Do this early, to cache the huge binary download
+RUN wget -q -O /tmp/eagle.tar.gz https://trial2.autodesk.com/NET17SWDLD/2017/EGLPRM/ESD/Autodesk_EAGLE_9.4.2_English_Linux_64bit.tar.gz
+
+# Install particular eagle dependencies
+RUN apt-get -y install libnspr4 libglib2.0-0 libnss3 libasound2
+
 RUN apt-get -y install libcups2
 RUN apt-get -y install man-db
-RUN mkdir -p /opt/eagle-7.6.0
-RUN chown user:user /opt/eagle-7.6.0
+RUN mkdir -p /opt/eagle-9.4.2
+RUN chown user:user /opt/eagle-9.4.2
 
 ADD vnc-passwd-abcd1234 /home/user/.vnc/passwd
 RUN chown -R user:user /home/user/.vnc
@@ -28,12 +34,13 @@ RUN chown -R user:user /home/user/bin
 # ------------------------------------------------------------------------
 
 USER user
-WORKDIR /home/user
+WORKDIR /opt
 
-RUN wget -q -O eagle-lin64-7.6.0.run http://web.cadsoft.de/ftp/eagle/program/7.6/eagle-lin64-7.6.0.run
-RUN chmod 755 eagle-lin64-7.6.0.run
-RUN ./eagle-lin64-7.6.0.run /opt
-RUN rm eagle-lin64-7.6.0.run
+RUN tar zxpf /tmp/eagle.tar.gz
 RUN mkdir /home/user/eagle
 
-CMD /home/user/bin/start.sh
+WORKDIR /home/user
+CMD /opt/eagle-9.4.2/eagle
+
+USER root
+RUN rm /tmp/eagle.tar.gz

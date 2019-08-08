@@ -1,6 +1,6 @@
 # docker-eagle
 
-CadSoft EAGLE is popular PCB design software, with a schematic editor, extensive part libraries, PCB layout editor, track auto-routing and more.
+Autodesk EAGLE (formerly by CadSoft) is popular PCB design software, with a schematic editor, extensive part libraries, PCB layout editor, track auto-routing and more.
 
 EAGLE is available under both freeware and commercial licenses using a license key file.
 
@@ -26,7 +26,7 @@ This will make the VNC server visible on localhost port 32768. Next, run a VNC c
 
 VNC requires a password. A default password of "abcd1234" is built into the container.
 
-The viewer window will open, with EAGLE already running and (the first time it is run) asking for a license key. Choose "Freeware" to start using EAGLE as freeware. Or, if you have a commercial or trial key from CadSoft, you'll need to copy that key into your container.
+The viewer window will open, with EAGLE already running and (the first time it is run) asking for a license key. Choose "Freeware" to start using EAGLE as freeware. Or, if you have a commercial or trial key from Autodesk, you'll need to copy that key into your container.
 
 ## Persistent storage
 
