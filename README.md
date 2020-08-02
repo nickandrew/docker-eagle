@@ -4,13 +4,13 @@ Autodesk EAGLE (formerly by CadSoft) is popular PCB design software, with a sche
 
 EAGLE is available under both freeware and commercial licenses using a license key file.
 
-This repository packages the latest 64-bit Linux release of EAGLE in a Docker container.
+This repository packages the latest (at commit time) 64-bit Linux release of EAGLE in a Docker container.
 
 ## BUILDING
 
 First install docker (see [Docker Installation](http://docs.docker.com/installation/) )
 
-Then run: `docker build .`
+Then run: `docker build -t eagle962 .`
 
 ## RUNNING
 
@@ -22,7 +22,9 @@ To run the container:
 
 This will make the VNC server visible on localhost port 32768. Next, run a VNC client:
 
-   ```vncviewer 0.0.0.0:32768```
+```
+xtigervncviewer -SecurityTypes VncAuth 0.0.0.0:32768
+```
 
 VNC requires a password. A default password of "abcd1234" is built into the container.
 
