@@ -1,5 +1,5 @@
-FROM ubuntu:23.10
-MAINTAINER Nick Andrew <nick@nick-andrew.net>
+FROM ubuntu:24.04
+LABEL org.opencontainers.image.authors="Nick Andrew <nick@nick-andrew.net>"
 EXPOSE 5901
 
 RUN apt-get update && apt-get -y upgrade
@@ -18,7 +18,7 @@ RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 RUN /usr/sbin/locale-gen
 
 # Install particular eagle dependencies
-RUN apt-get -y install libnspr4 libglib2.0-0 libnss3 libasound2
+RUN apt-get -y install libnspr4 libglib2.0-0 libnss3 liboss4-salsa-asound2
 
 RUN apt-get -y install libcups2
 RUN apt-get -y install man-db
@@ -43,4 +43,4 @@ RUN ls -l /tmp
 RUN mkdir /home/user/eagle
 
 WORKDIR /home/user
-CMD /home/user/bin/start.sh
+CMD ["/home/user/bin/start.sh"]
