@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:25.04
 LABEL org.opencontainers.image.authors="Nick Andrew <nick@nick-andrew.net>"
 EXPOSE 5901
 
